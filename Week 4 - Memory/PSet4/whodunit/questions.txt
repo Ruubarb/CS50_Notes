@@ -1,45 +1,30 @@
 1. What’s stdint.h?
-
-
+This library defines integer types and gives each time a minimum and maximum, as well as an alias(typedef)
 
 2. What’s the point of using uint8_t, uint32_t, int32_t, and uint16_t in a program?
-
-
+These are typedefs from stdint.h that refer to the amount of bits used for common data types:
+unsigned integers, characters, doubles, long longs, etc
 
 3. How many bytes is a BYTE, a DWORD, a LONG, and a WORD, respectively?
-
-
+BYTE 1-byte
+DWORD 4-bytes
+LONG 4-bytes
+WORD 2-bytes
 
 4. What (in ASCII, decimal, or hexadecimal) must the first two bytes of any BMP file be? Leading bytes used to identify file formats (with high probability) are generally called "magic numbers."
 
-
-
 5. What’s the difference between bfSize and biSize?
-
-
 
 6. What does it mean if biHeight is negative?
 
-
-
 7. What field in BITMAPINFOHEADER specifies the BMP’s color depth (i.e., bits per pixel)?
-
-
 
 8. Why might fopen return NULL in lines 24 and 32 of copy.c?
 
-
-
 9. Why is the third argument to fread always 1 in our code?
-
-
 
 10. What value does line 65 of copy.c assign to padding if bi.biWidth is 3?
 
-
-
 11. What does fseek do?
-
-
 
 12. What is SEEK_CUR?
