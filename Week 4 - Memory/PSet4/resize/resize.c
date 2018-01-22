@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 
     // remember filenames
     int value = atoi(argv[1]);
-    printf("%i\n", value);
+    //printf("%i\n", value);
     char *infile = argv[2];
     char *outfile = argv[3];
 
@@ -55,6 +55,11 @@ int main(int argc, char *argv[])
         fclose(inptr);
         fprintf(stderr, "Unsupported file format.\n");
         return 4;
+    }
+
+    if (value < 1 || value > 100)
+    {
+        printf("Please enter a value between 0 and 100\n");
     }
 
     // write outfile's BITMAPFILEHEADER
