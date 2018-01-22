@@ -73,6 +73,10 @@ int main(int argc, char *argv[])
             // temporary storage
             RGBTRIPLE triple;
 
+            if (triple.rgbtRed == 0xff) {
+                triple.rgbtRed = triple.rgbtBlue;
+            }
+
             // read RGB triple from infile
             fread(&triple, sizeof(RGBTRIPLE), 1, inptr);
 
