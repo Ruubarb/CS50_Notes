@@ -1,7 +1,7 @@
 /**
  * Copies a BMP piece by piece, just because.
  */
-       
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     char *infile = argv[1];
     char *outfile = argv[2];
 
-    // open input file 
+    // open input file
     FILE *inptr = fopen(infile, "r");
     if (inptr == NULL)
     {
@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
     fread(&bi, sizeof(BITMAPINFOHEADER), 1, inptr);
 
     // ensure infile is (likely) a 24-bit uncompressed BMP 4.0
-    if (bf.bfType != 0x4d42 || bf.bfOffBits != 54 || bi.biSize != 40 || 
+    if (bf.bfType != 0x4d42 || bf.bfOffBits != 54 || bi.biSize != 40 ||
         bi.biBitCount != 24 || bi.biCompression != 0)
     {
         fclose(outptr);
@@ -73,12 +73,12 @@ int main(int argc, char *argv[])
             // temporary storage
             RGBTRIPLE triple;
 
-            if (triple.rgbtRed == 0xff) {
-                triple.rgbtRed = triple.rgbtBlue;
-            }
-
             // read RGB triple from infile
             fread(&triple, sizeof(RGBTRIPLE), 1, inptr);
+
+            triple.rgbtBlue = 0x00;
+            triple.rgbtGreen = 0xff;
+            triple.rgbtRed = 0x00;
 
             // write RGB triple to outfile
             fwrite(&triple, sizeof(RGBTRIPLE), 1, outptr);
