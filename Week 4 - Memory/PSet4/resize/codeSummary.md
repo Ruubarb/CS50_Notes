@@ -1,6 +1,6 @@
 # Resize Summary
 
-## General Notes
+## Notes
 
 ### On Image Resize
 The pixel width and pixel height are changed when the resize program runs. The outfile dimensions are n * infile dimensions. If the infile is 100x100 pixels and n is 2, the outfile will be 200x200 pixels. 
@@ -14,3 +14,6 @@ From my understanding, each pixel is resized n times within the inner loop. In t
 
 ### Vertical resize
 There are two methods for this. The first method rewrites each row, and the second method recopies each one.
+
+### General Observations
+Not only does the outfile increase in terms of dimensions (pixel width and height), but more memory is needed for each new pixel. The hints say malloc() is a *possibility*, but I see it as a necessity or how else can memory be allocated for the extra amount of pixels.
