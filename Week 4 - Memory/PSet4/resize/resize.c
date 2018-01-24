@@ -12,13 +12,12 @@ int main(int argc, char *argv[])
     // ensure proper usage
     if (argc != 4)
     {
-        fprintf(stderr, "Usage: ./resize value infile outfile\n");
+        fprintf(stderr, "Usage: ./resize n infile outfile\n");
         return 1;
     }
 
     // remember filenames
-    int value = atoi(argv[1]);
-    //printf("%i\n", value);
+    int n = atoi(argv[1]);
     char *infile = argv[2];
     char *outfile = argv[3];
 
@@ -57,9 +56,9 @@ int main(int argc, char *argv[])
         return 4;
     }
 
-    if (value < 1 || value > 100)
+    if (n < 1 || n > 100)
     {
-        printf("Please enter a value between 0 and 100\n");
+        printf("Please enter a value between 1 and 100\n");
     }
 
     // write outfile's BITMAPFILEHEADER
