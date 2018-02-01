@@ -62,10 +62,10 @@ int main(int argc, char *argv[])
     }
 
     // write outfile's BITMAPFILEHEADER
-    fwrite(&bf, sizeof(BITMAPFILEHEADER), n, outptr); //file size increases, but file format is messed up, not read as valid image file
+    fwrite(&bf, sizeof(BITMAPFILEHEADER), 1, outptr);
 
     // write outfile's BITMAPINFOHEADER
-    fwrite(&bi, sizeof(BITMAPINFOHEADER), n, outptr); //random pixels are added, but file size doesn't increase
+    fwrite(&bi, sizeof(BITMAPINFOHEADER), 1, outptr);
 
     // determine padding for scanlines
     int padding = (4 - (bi.biWidth * sizeof(RGBTRIPLE)) % 4) % 4;
@@ -80,10 +80,10 @@ int main(int argc, char *argv[])
             RGBTRIPLE triple;
 
             // read RGB triple from infile
-            fread(&triple, sizeof(RGBTRIPLE), 1, inptr);
+            fread(&triple, sizeof(RGBTRIPLE), 1, inptr); //leave this alone
 
             // write RGB triple to outfile
-            fwrite(&triple, sizeof(RGBTRIPLE), n, outptr); //random pixels are added, but file size doesn't increase
+            fwrite(&triple, sizeof(RGBTRIPLE), 1, outptr); //have this copy pixel n times by putting it in a for loop
         }
 
         // skip over padding, if any
