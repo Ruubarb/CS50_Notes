@@ -61,12 +61,7 @@ int main(int argc, char *argv[])
         printf("Please enter a value between 1 and 100\n");
     }
 
-    /*
-    for (int i = 0; i < n; i++)
-    {
-        bf.bfSize++;
-    }
-    */
+    bf.bfSize *= n;
 
     // write outfile's BITMAPFILEHEADER
     fwrite(&bf, sizeof(BITMAPFILEHEADER), 1, outptr);
