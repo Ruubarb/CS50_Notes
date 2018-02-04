@@ -62,6 +62,9 @@ int main(int argc, char *argv[])
     }
 
     bf.bfSize *= n;
+    bi.biWidth *= n;
+    bi.biHeight *= n;
+    bi.biSizeImage *= n;
 
     // write outfile's BITMAPFILEHEADER
     fwrite(&bf, sizeof(BITMAPFILEHEADER), 1, outptr);
@@ -84,8 +87,11 @@ int main(int argc, char *argv[])
             // read RGB triple from infile
             fread(&triple, sizeof(RGBTRIPLE), 1, inptr); //leave this alone
 
+            for (int l = 0; l < n; l++)
+            {
             // write RGB triple to outfile
-            fwrite(&triple, sizeof(RGBTRIPLE), 1, outptr); //have this copy pixel n times by putting it in a for loop
+                fwrite(&triple, sizeof(RGBTRIPLE), 1, outptr); //have this copy pixel n times by putting it in a for loop
+            }
         }
 
         // skip over padding, if any
