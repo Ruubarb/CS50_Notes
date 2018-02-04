@@ -89,7 +89,7 @@ int main(int argc, char *argv[])
 
             for (int l = 0; l < n; l++)
             {
-            // write RGB triple to outfile
+                // write RGB triple to outfile
                 fwrite(&triple, sizeof(RGBTRIPLE), 1, outptr); //have this copy pixel n times by putting it in a for loop
             }
         }
