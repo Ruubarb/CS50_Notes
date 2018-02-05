@@ -63,8 +63,7 @@ int main(int argc, char *argv[])
 
     bi.biWidth *= n;
     bi.biHeight *= n;
-    bf.bfSize *= n;
-    bi.biSizeImage *= n;
+    bi.biSizeImage *= (n * n);
 
     // write outfile's BITMAPFILEHEADER
     fwrite(&bf, sizeof(BITMAPFILEHEADER), 1, outptr);
