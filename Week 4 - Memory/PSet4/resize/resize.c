@@ -61,9 +61,9 @@ int main(int argc, char *argv[])
         printf("Please enter a value between 1 and 100\n");
     }
 
-    bf.bfSize *= n;
     bi.biWidth *= n;
     bi.biHeight *= n;
+    bf.bfSize *= n;
     bi.biSizeImage *= n;
 
     // write outfile's BITMAPFILEHEADER
@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
             for (int l = 0; l < n; l++)
             {
                 // write RGB triple to outfile
-                fwrite(&triple, sizeof(RGBTRIPLE), 1, outptr); //have this copy pixel n times by putting it in a for loop
+                fwrite(&triple, sizeof(RGBTRIPLE), 1, outptr);
             }
         }
 
