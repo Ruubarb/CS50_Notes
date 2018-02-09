@@ -61,11 +61,14 @@ int main(int argc, char *argv[])
         printf("Please enter a value between 1 and 100\n");
     }
 
-    bi.biWidth *= n;
-    bi.biHeight *= n;
-    int newPadding = (4 - (bi.biWidth * sizeof(RGBTRIPLE)) % 4) % 4;
-    bi.biSizeImage = ((sizeof(RGBTRIPLE) * bi.biWidth) + newPadding) * abs(bi.biHeight);
-    bf.bfSize = bi.biSizeImage + sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER);
+    BITMAPFILEHEADER NF;
+    BITMAPINFOHEADER NI;
+
+    NI.biWidth = bi.biWidth * n;
+    NI.biHeight = bi.biHeight * n;
+    int newPadding = (4 - (NI.biWidth * sizeof(RGBTRIPLE)) % 4) % 4;
+    NI.biSizeImage = ((sizeof(RGBTRIPLE) * NI.biWidth) + newPadding) * abs(NI.biHeight);
+    NF.bfSize = NI.biSizeImage + sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER);
 
     // write outfile's BITMAPFILEHEADER
     fwrite(&bf, sizeof(BITMAPFILEHEADER), 1, outptr);
