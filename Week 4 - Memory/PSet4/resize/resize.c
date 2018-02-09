@@ -61,17 +61,22 @@ int main(int argc, char *argv[])
         printf("Please enter a value between 1 and 100\n");
     }
 
-    bi.biWidth *= n;
-    bi.biHeight *= n;
-    int newPadding = (4 - (bi.biWidth * sizeof(RGBTRIPLE)) % 4) % 4;
-    bi.biSizeImage = ((sizeof(RGBTRIPLE) * bi.biWidth) + newPadding) * abs(bi.biHeight);
-    bf.bfSize = bi.biSizeImage + sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER);
+    //variables for headers changed by n, the outfile
+    BITMAPFILEHEADER nf = bf;
+    BITMAPINFOHEADER ni = bi;
+
+    //only affects outfile
+    ni.biWidth = bi.biWidth * n;
+    ni.biHeight = bi.biHeight * n;
+    int newPadding = (4 - (ni.biWidth * sizeof(RGBTRIPLE)) % 4) % 4;
+    ni.biSizeImage = ((sizeof(RGBTRIPLE) * ni.biWidth) + newPadding) * abs(ni.biHeight);
+    nf.bfSize = ni.biSizeImage + sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER);
 
     // write outfile's BITMAPFILEHEADER
-    fwrite(&bf, sizeof(BITMAPFILEHEADER), 1, outptr);
+    fwrite(&nf, sizeof(BITMAPFILEHEADER), 1, outptr); //writes to variable created above
 
     // write outfile's BITMAPINFOHEADER
-    fwrite(&bi, sizeof(BITMAPINFOHEADER), 1, outptr);
+    fwrite(&ni, sizeof(BITMAPINFOHEADER), 1, outptr); //writes to variable created above
 
     // determine padding for scanlines
     int padding = (4 - (bi.biWidth * sizeof(RGBTRIPLE)) % 4) % 4;
@@ -86,8 +91,9 @@ int main(int argc, char *argv[])
             RGBTRIPLE triple;
 
             // read RGB triple from infile
-            fread(&triple, sizeof(RGBTRIPLE), 1, inptr); //leave this alone
+            fread(&triple, sizeof(RGBTRIPLE), 1, inptr);
 
+            //write pixel n times
             for (int l = 0; l < n; l++)
             {
                 // write RGB triple to outfile
