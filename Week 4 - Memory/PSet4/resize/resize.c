@@ -61,7 +61,6 @@ int main(int argc, char *argv[])
         printf("Please enter a value between 1 and 100\n");
     }
 
-
     //variables for headers changed by n, the outfile
     BITMAPFILEHEADER nf = bf;
     BITMAPINFOHEADER ni = bi;
@@ -72,16 +71,6 @@ int main(int argc, char *argv[])
     int newPadding = (4 - (ni.biWidth * sizeof(RGBTRIPLE)) % 4) % 4;
     ni.biSizeImage = ((sizeof(RGBTRIPLE) * ni.biWidth) + newPadding) * abs(ni.biHeight);
     nf.bfSize = ni.biSizeImage + sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER);
-
-
-
-
-
-
-
-
-
-
 
     // write outfile's BITMAPFILEHEADER
     fwrite(&nf, sizeof(BITMAPFILEHEADER), 1, outptr); //writes to variable created above
