@@ -93,13 +93,21 @@ int main(int argc, char *argv[])
             // read RGB triple from infile
             fread(&triple, sizeof(RGBTRIPLE), 1, inptr);
 
-            //write pixel n times
+            /*
+            //horizontal resize only
             for (int l = 0; l < n; l++)
             {
-                // write RGB triple to outfile
                 fwrite(&triple, sizeof(RGBTRIPLE), 1, outptr);
             }
-
+            */
+            for (int m = 0; m < n-1; m++)
+            {
+                //every row except for last row
+                for (int l = 0; l < n; l++)
+                {
+                    fwrite(&triple, sizeof(RGBTRIPLE), 1, outptr);
+                }
+            }
         }
 
         // then add it back (to demonstrate how)
