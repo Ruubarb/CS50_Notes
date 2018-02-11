@@ -62,21 +62,21 @@ int main(int argc, char *argv[])
     }
 
     //variables for headers changed by n, the outfile
-    BITMAPFILEHEADER nf = bf;
-    BITMAPINFOHEADER ni = bi;
+    BITMAPFILEHEADER newFile = bf;
+    BITMAPINFOHEADER newInfo = bi;
 
     //only affects outfile
-    ni.biWidth = bi.biWidth * n;
-    ni.biHeight = bi.biHeight * n;
-    int newPadding = (4 - (ni.biWidth * sizeof(RGBTRIPLE)) % 4) % 4;
-    ni.biSizeImage = ((sizeof(RGBTRIPLE) * ni.biWidth) + newPadding) * abs(ni.biHeight);
-    nf.bfSize = ni.biSizeImage + sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER);
+    newInfo.biWidth = bi.biWidth * n;
+    newInfo.biHeight = bi.biHeight * n;
+    int newPadding = (4 - (newInfo.biWidth * sizeof(RGBTRIPLE)) % 4) % 4;
+    newInfo.biSizeImage = ((sizeof(RGBTRIPLE) * newInfo.biWidth) + newPadding) * abs(newInfo.biHeight);
+    newFile.bfSize = newInfo.biSizeImage + sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER);
 
     // write outfile's BITMAPFILEHEADER
-    fwrite(&nf, sizeof(BITMAPFILEHEADER), 1, outptr); //writes to variable created above
+    fwrite(&newFile, sizeof(BITMAPFILEHEADER), 1, outptr); //writes to variable created above
 
     // write outfile's BITMAPINFOHEADER
-    fwrite(&ni, sizeof(BITMAPINFOHEADER), 1, outptr); //writes to variable created above
+    fwrite(&newInfo, sizeof(BITMAPINFOHEADER), 1, outptr); //writes to variable created above
 
     // determine padding for scanlines
     int padding = (4 - (bi.biWidth * sizeof(RGBTRIPLE)) % 4) % 4;
@@ -91,13 +91,13 @@ int main(int argc, char *argv[])
             RGBTRIPLE triple;
 
             //vertically reading into pixels
-            for (int m = 0; m < n-1; m++)
+            for (int vert = 0; vert < n-1; vert++)
             {
                 // read RGB triple from infile
                 fread(&triple, sizeof(RGBTRIPLE), 1, inptr);
 
                 //write pixel n times horizontally
-                for (int l = 0; l < n; l++)
+                for (int horiz = 0; horiz < n; horiz++)
                 {
                     fwrite(&triple, sizeof(RGBTRIPLE), 1, outptr);
                 }
