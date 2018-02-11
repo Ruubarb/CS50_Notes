@@ -84,15 +84,17 @@ int main(int argc, char *argv[])
     // iterate over infile's scanlines
     for (int i = 0, biHeight = abs(bi.biHeight); i < biHeight; i++)
     {
-        // iterate over pixels in scanline
-        for (int j = 0; j < bi.biWidth; j++)
-        {
-            // temporary storage
-            RGBTRIPLE triple;
 
-            //vertically reading into pixels
-            for (int vert = 0; vert < n-1; vert++)
+        //vertically reading into pixels
+        for (int vert = 0; vert < n; vert++)
+        {
+
+            // iterate over pixels in scanline
+            for (int j = 0; j < bi.biWidth; j++)
             {
+                // temporary storage
+                RGBTRIPLE triple;
+
                 // read RGB triple from infile
                 fread(&triple, sizeof(RGBTRIPLE), 1, inptr);
 
@@ -102,20 +104,24 @@ int main(int argc, char *argv[])
                     fwrite(&triple, sizeof(RGBTRIPLE), 1, outptr);
                 }
 
+            }
+
+            // then add it back (to demonstrate how)
+            for (int k = 0; k < newPadding; k++)
+            {
+                fputc(0x00, outptr);
+            }
+
+            // skip over padding, if any
+            fseek(inptr, padding, SEEK_CUR);
+
+            if (n > 1)
+            {
                 //go back to beginning of fread
                 fseek(inptr, -((sizeof(RGBTRIPLE) * n) + padding), SEEK_CUR);
             }
 
         }
-
-        // then add it back (to demonstrate how)
-        for (int k = 0; k < newPadding; k++)
-        {
-            fputc(0x00, outptr);
-        }
-
-        // skip over padding, if any
-        fseek(inptr, padding, SEEK_CUR);
 
 
     }
