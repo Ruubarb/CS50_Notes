@@ -90,24 +90,22 @@ int main(int argc, char *argv[])
             // temporary storage
             RGBTRIPLE triple;
 
-            // read RGB triple from infile
-            fread(&triple, sizeof(RGBTRIPLE), 1, inptr);
-
-            /*
-            //horizontal resize only
-            for (int l = 0; l < n; l++)
-            {
-                fwrite(&triple, sizeof(RGBTRIPLE), 1, outptr);
-            }
-            */
+            //vertically reading into pixels
             for (int m = 0; m < n-1; m++)
             {
-                //every row except for last row
+                // read RGB triple from infile
+                fread(&triple, sizeof(RGBTRIPLE), 1, inptr);
+
+                //write pixel n times horizontally
                 for (int l = 0; l < n; l++)
                 {
                     fwrite(&triple, sizeof(RGBTRIPLE), 1, outptr);
                 }
+
+                //go back to beginning of fread
+                fseek(inptr, -((sizeof(RGBTRIPLE) * n) + padding), SEEK_CUR);
             }
+
         }
 
         // then add it back (to demonstrate how)
