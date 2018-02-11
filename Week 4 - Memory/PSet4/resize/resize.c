@@ -72,8 +72,6 @@ int main(int argc, char *argv[])
     newInfo.biSizeImage = ((sizeof(RGBTRIPLE) * newInfo.biWidth) + newPadding) * abs(newInfo.biHeight);
     newFile.bfSize = newInfo.biSizeImage + sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER);
 
-    int counter = n; //decrements when n is greater than 1 in fseek
-
     // write outfile's BITMAPFILEHEADER
     fwrite(&newFile, sizeof(BITMAPFILEHEADER), 1, outptr); //writes to variable created above
 
@@ -117,11 +115,10 @@ int main(int argc, char *argv[])
             // skip over padding, if any
             fseek(inptr, padding, SEEK_CUR);
 
-            if (counter > 1)
+            if (vert < n-1)
             {
                 //go back to beginning of fread
-                fseek(inptr, -((sizeof(RGBTRIPLE) * n) + padding), SEEK_CUR);
-                counter--;
+                fseek(inptr, -((sizeof(RGBTRIPLE) * bi.biWidth) + padding), SEEK_CUR);
             }
 
         }
