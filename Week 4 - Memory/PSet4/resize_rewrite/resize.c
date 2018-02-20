@@ -65,9 +65,12 @@ int main(int argc, char *argv[])
         return 5;
     }
 
+
     //outfile header variables
     BITMAPFILEHEADER *bfNew = malloc(sizeof(bf));
     BITMAPINFOHEADER *biNew = malloc(sizeof(bi));
+    *bfNew = bf;
+    *biNew = bi;
 
     //outfile width and height
     biNew->biWidth = bi.biWidth * n;
@@ -80,11 +83,12 @@ int main(int argc, char *argv[])
     biNew->biSizeImage = ((sizeof(RGBTRIPLE) * biNew->biWidth) + paddingNew) * abs(biNew->biHeight);
     bfNew->bfSize = biNew->biSizeImage + sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER);
 
+
     // write outfile's BITMAPFILEHEADER
-    fwrite(&bfNew, sizeof(BITMAPFILEHEADER), 1, outptr);
+    fwrite(bfNew, sizeof(BITMAPFILEHEADER), 1, outptr);
 
     // write outfile's BITMAPINFOHEADER
-    fwrite(&biNew, sizeof(BITMAPINFOHEADER), 1, outptr);
+    fwrite(biNew, sizeof(BITMAPINFOHEADER), 1, outptr);
 
     // determine padding for scanlines
     int padding = (4 - (bi.biWidth * sizeof(RGBTRIPLE)) % 4) % 4;
@@ -101,18 +105,21 @@ int main(int argc, char *argv[])
             // read RGB triple from infile
             fread(&triple, sizeof(RGBTRIPLE), 1, inptr);
 
-            // write RGB triple to outfile
-            fwrite(&triple, sizeof(RGBTRIPLE), 1, outptr);
+            for (int pxWrite = 0; pxWrite < n; pxWrite++)
+            {
+                // write RGB triple to outfile
+                fwrite(&triple, sizeof(RGBTRIPLE), 1, outptr);
+            }
+        }
+
+        // then add it back (to demonstrate how)
+        for (int k = 0; k < paddingNew; k++)
+        {
+            fputc(0x00, outptr);
         }
 
         // skip over padding, if any
         fseek(inptr, padding, SEEK_CUR);
-
-        // then add it back (to demonstrate how)
-        for (int k = 0; k < padding; k++)
-        {
-            fputc(0x00, outptr);
-        }
     }
 
     free(bfNew);
