@@ -65,13 +65,26 @@ int main(int argc, char *argv[])
         return 5;
     }
 
+    //outfile header variables
+    BITMAPFILEHEADER *bfNew = malloc(sizeof(bf));
+    BITMAPINFOHEADER *biNew = malloc(sizeof(bi));
 
+    //outfile width and height
+    biNew->biWidth = bi.biWidth * n;
+    biNew->biHeight = bi.biHeight * n;
+
+    //outfile heading
+    int paddingNew = (4 - (biNew->biWidth * sizeof(RGBTRIPLE)) % 4) % 4;
+
+    //outfile biSizeImage and bfSize
+    biNew->biSizeImage = ((sizeof(RGBTRIPLE) * biNew->biWidth) + paddingNew) * abs(biNew->biHeight);
+    bfNew->bfSize = biNew->biSizeImage + sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER);
 
     // write outfile's BITMAPFILEHEADER
-    fwrite(&bf, sizeof(BITMAPFILEHEADER), 1, outptr);
+    fwrite(&bfNew, sizeof(BITMAPFILEHEADER), 1, outptr);
 
     // write outfile's BITMAPINFOHEADER
-    fwrite(&bi, sizeof(BITMAPINFOHEADER), 1, outptr);
+    fwrite(&biNew, sizeof(BITMAPINFOHEADER), 1, outptr);
 
     // determine padding for scanlines
     int padding = (4 - (bi.biWidth * sizeof(RGBTRIPLE)) % 4) % 4;
@@ -101,6 +114,9 @@ int main(int argc, char *argv[])
             fputc(0x00, outptr);
         }
     }
+
+    free(bfNew);
+    free(biNew);
 
     // close infile
     fclose(inptr);
