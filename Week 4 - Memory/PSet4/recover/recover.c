@@ -12,11 +12,19 @@ int main(int argc, char *argv[])
 
     char *infile = argv[1];
 
-    FILE *memcard = fopen("card.raw", "r");
+    FILE *memcard = fopen(infile, "r");
     if (memcard == NULL)
     {
         fprintf(stderr, "Could not open %s.\n", infile);
         return 2;
+    }
+
+    for ()
+    {
+        for ()
+        {
+
+        }
     }
 
     fclose(memcard);
