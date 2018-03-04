@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 
 int main(int argc, char *argv[])
 {
@@ -18,6 +19,8 @@ int main(int argc, char *argv[])
         fprintf(stderr, "Could not open %s.\n", infile);
         return 2;
     }
+
+    uint8_t buffer[512];
 
 
     while (fread(buffer, 512, 1, memcard) == 512) //need to declare buffer as a struct?
