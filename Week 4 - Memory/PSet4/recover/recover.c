@@ -19,9 +19,15 @@ int main(int argc, char *argv[])
         return 2;
     }
 
-    for ()
+    //512 buffer block
+    fread(buffer, 512, 1, infile);
+
+    while (sizeof(buffer) == 512)
     {
-        for ()
+        if (buffer[0] == 0xff &&
+            buffer[1] == 0xd8 &&
+            buffer[2] == 0xff &&
+            (buffer[3] & 0xf0) == 0xe0)
         {
 
         }
