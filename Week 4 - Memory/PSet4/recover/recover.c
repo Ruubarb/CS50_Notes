@@ -19,10 +19,8 @@ int main(int argc, char *argv[])
         return 2;
     }
 
-    //512 buffer block
-    fread(buffer, 512, 1, infile);
 
-    while (sizeof(buffer) == 512)
+    while (fread(buffer, 512, 1, memcard) == 512) //need to declare buffer as a struct?
     {
         if (buffer[0] == 0xff &&
             buffer[1] == 0xd8 &&
