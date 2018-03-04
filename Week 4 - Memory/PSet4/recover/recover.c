@@ -23,14 +23,19 @@ int main(int argc, char *argv[])
     uint8_t buffer[512];
 
 
-    while (fread(buffer, 512, 1, memcard) == 512) //need to declare buffer as a struct?
+    while (fread(buffer, 1, 512, memcard) == 512)
     {
         if (buffer[0] == 0xff &&
             buffer[1] == 0xd8 &&
             buffer[2] == 0xff &&
             (buffer[3] & 0xf0) == 0xe0)
         {
+            printf("-J-");
+        }
 
+        else
+        {
+            printf("PEG");
         }
     }
 
