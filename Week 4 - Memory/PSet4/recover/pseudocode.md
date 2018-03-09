@@ -2,18 +2,17 @@
 
 ## Pseudocode
 
-    fopen raw file as read-only
-    while fread buffer == 512 bytes
-    	if block == jpeg_header
-        	headerCheck == 1 //means a header has been found
-            if jpgCheck == 1
-            	fclose jpeg
-            	sprintf jpeg
-        	else 
-        		fwrite new jpeg
-    	if headerCheck == 1
-    		jpgCheck == 1 //means this belongs to current jpeg file
-    		fwrite block
-	fclose last jpeg
-	fclose memcard 
-           
+	open raw file as read-only
+	while loop through each 512-byte sized block
+		if the block[0], [1], [2], [3] equal a jpeg header
+			headerCheck variable is set to 1
+			if the jpegCheck variable equals 1
+				close the current jpeg being written
+				save that jpeg
+			else
+				write a new jpeg file
+			if the headerCheck variable equals 1
+				jpegCheck variable is set to 1
+				write jpeg block
+	close last jpeg
+	close raw file
