@@ -8,11 +8,11 @@
 			headerCheck variable is set to 1
 			if the jpegCheck variable equals 1
 				close the current jpeg being written
-				save that jpeg
+				save that jpeg as a new file
 			else
-				write a new jpeg file
-			if the headerCheck variable equals 1
-				jpegCheck variable is set to 1
-				write jpeg block
+				write a new jpeg block
+		if the headerCheck variable equals 1
+			jpegCheck variable is set to 1
+			write jpeg block
 	close last jpeg
 	close raw file
