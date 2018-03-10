@@ -2,7 +2,7 @@
 
 ## Pseudocode
 
-**headerCheck**: When it's set to 1, program knows a JPEG header has been detected. 
+**headerCheck**: When it's set to 1, program knows a JPEG header has been detected.  
 **jpegCheck**: When it's set to 1, program knows a valid JPEG block, that's not a header, has been detected.
 
 	open raw file as read-only
