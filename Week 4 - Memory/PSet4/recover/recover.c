@@ -21,16 +21,20 @@ int main(int argc, char *argv[])
     }
 
     uint8_t buffer[512];
-    int headerCheck;
-    int jpegCheck;
-    int value = -1;
-    FILE *img = NULL;
+
+    int headerCheck; //detects header block
+    int jpegCheck; //detects non-header jpeg block
+
+    int value = -1; //sprintf variable set to -1 since first filename must start with 0
+
+    FILE *img;
     char filename[8];
 
 
 
     while (fread(buffer, 1, 512, memcard) == 512) //loop ends if a block != 512, signaling the end-of-file
     {
+        fread(buffer, 1, 512, memcard);
         if (buffer[0] == 0xff &&
             buffer[1] == 0xd8 &&
             buffer[2] == 0xff &&
@@ -38,6 +42,7 @@ int main(int argc, char *argv[])
         {
             headerCheck = 1; //header block found
             value++;
+
             if (jpegCheck == 1)
             {
                 fclose(img);
@@ -46,12 +51,14 @@ int main(int argc, char *argv[])
                 img = fopen(filename, "w");
                 fwrite(buffer, 1, 512, img);
             }
+
             else
             {
                 sprintf(filename, "%03i.jpg", value);
                 img = fopen(filename, "w");
                 fwrite(buffer, 1, 512, img);
             }
+
         }
 
         if (headerCheck == 1)
