@@ -11,12 +11,13 @@
 			headerCheck variable is set to 1
 			if the jpegCheck variable equals 1
 				close the current jpeg being written
-				save that jpeg as a new file
 				jpegCheck is set to 0
-				open write-only file
+				create a new jpeg file
+				open new jpeg file as write-only
 				write to new file
 			else
-				open write-only file
+				create a new jpeg file
+				open new jpeg file as write-only
 				write to new file
 		if the headerCheck variable equals 1
 			jpegCheck variable is set to 1
