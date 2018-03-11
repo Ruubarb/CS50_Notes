@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
             headerCheck = 1; //header block found
             if (jpegCheck == 1)
             {
-                fclose(filename);
+                fclose(img);
                 jpegCheck = 0;
                 sprintf(filename, "%03i.jpg", 2);
                 FILE *img = fopen(filename, "w");
@@ -55,6 +55,7 @@ int main(int argc, char *argv[])
             fwrite(buffer, 1, 512, img);
         }
     }
+    fclose(img);
 
     fclose(memcard);
 

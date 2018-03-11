@@ -23,5 +23,4 @@
 			jpegCheck variable is set to 1
 			write jpeg block
 	close last file
-	save file to jpeg
 	close raw file
