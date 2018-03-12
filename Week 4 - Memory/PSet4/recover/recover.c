@@ -34,7 +34,6 @@ int main(int argc, char *argv[])
 
     while (fread(buffer, 1, 512, memcard) == 512) //loop ends if a block != 512, signaling the end-of-file
     {
-        fread(buffer, 1, 512, memcard);
         if (buffer[0] == 0xff &&
             buffer[1] == 0xd8 &&
             buffer[2] == 0xff &&
@@ -49,14 +48,12 @@ int main(int argc, char *argv[])
                 jpegCheck = 0;
                 sprintf(filename, "%03i.jpg", value);
                 img = fopen(filename, "w");
-                fwrite(buffer, 1, 512, img);
             }
 
             else
             {
                 sprintf(filename, "%03i.jpg", value);
                 img = fopen(filename, "w");
-                fwrite(buffer, 1, 512, img);
             }
 
         }
