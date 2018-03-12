@@ -1,3 +1,4 @@
 *.backup
 *.exe
 *.obj
+*.raw
