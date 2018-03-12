@@ -20,20 +20,21 @@ int main(int argc, char *argv[])
         return 2;
     }
 
-    uint8_t buffer[512];
+    uint8_t buffer[512]; //creates 512-byte sized block for buffer
 
     int headerCheck; //detects header block
     int jpegCheck; //detects non-header jpeg block
 
     int value = -1; //sprintf variable set to -1 since first filename must start with 0
 
-    FILE *img;
-    char filename[8];
+    FILE *img = NULL;
+    char filename[8]; //7 characters for filename and 8th for sentinel character
 
 
 
-    while (fread(buffer, 1, 512, memcard) == 512) //loop ends if a block != 512, signaling the end-of-file
+    while (fread(buffer, 1, 512, memcard) == 512) //loop ends if a block != 512, signaling the end-of-file (EOF)
     {
+        //first four blocks of header must contain this data
         if (buffer[0] == 0xff &&
             buffer[1] == 0xd8 &&
             buffer[2] == 0xff &&
@@ -64,7 +65,8 @@ int main(int argc, char *argv[])
             fwrite(buffer, 1, 512, img);
         }
     }
-    fclose(img);
+
+    fclose(img); //final image closes when EOF is reached, meaning block less than 512 detected
 
     fclose(memcard);
 
