@@ -18,7 +18,7 @@ A piece in data structure, can have any name assigned to it, but is referred to 
 ### Linked Lists
 Lists threaded together using pointers. These are a collection of nodes linked together with pointers.
 
-A linked list needs a *first* pointer to start off with. It needs to be followed 1-by-1, you can't jump ahead to another node in a linked list.
+A linked list needs a **first** pointer to start off with. It needs to be followed 1-by-1, you can't jump ahead to another node in a linked list.
 
 
 #### INSERT, DELETE, SEARCH
