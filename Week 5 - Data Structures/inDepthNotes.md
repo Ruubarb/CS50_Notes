@@ -88,5 +88,16 @@ Enqueue adds an element to the end of the queue, and Dequeue removes an element 
 * Dequeue works in a similar manner as pop()
 
 ## Hash Tables
+They combine abilities of arrays and linked lists, but they're not good for sorting data. When you're using a hash table, you care about the runtime in finding an element and don't want to increase it by sorting the hash table. You let the function decide where the element should go in the table.
+
+The hash function returns a positive integer, known as a hash code, and an array that can store data. The value is run through the function, stored somewhere in the array, and is represented by the hash code. 
+
+Instead of creating a hash function it's better to find one online (and cite your source as you would for any function you didn't create) because of the rules needed for a good hash function. 
+
+Sometimes hash tables can experience something known as collision, which is multiple values being given the same key. One way to get around this is by **Linear Probing**.  
+This is incrementing the hash code by 1 to find a suitable location.  
+However, if Linear Probing goes too far it can lead to clustering, too much side-by-side data, which can lead to a collision. 
+
+Another way to prevent collisions is **Chaining**, by having each element of the array contain multiple values. This is done by having linked lists as the elements and storing the values in those lists. Now one chain can be searched instead of the entire hash table.
 
 ## Tries
