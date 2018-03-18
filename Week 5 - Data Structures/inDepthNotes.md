@@ -72,6 +72,20 @@ Push() adds an element to the top of the stack and Pop() removes an element from
 Stacks are used to grab the most recently added element.
 
 ## Queues
+Similar concept to Stacks, except they're FIFO, First In Last Out, like a queue of people in a physical setting.
+
+Enqueue adds an element to the end of the queue, and Dequeue removes an element from the beginning of the queue.
+
+**Array based**
+
+* Enqueue needs to accept a pointer and a value to the queue. The value is added to the queue's end, and the queue size increases by 1
+* Dequeue accepts a pointer, and changes the location of the front element by 1. The size is decreased by 1 and the deleted value is returned
+
+**Linked List based**
+
+* Works similar to a Doubly Linked List
+* Enqueue has pointers for the head and tail of the linked list. It needs to follow the same rules as inserting an element into a linked list.
+* Dequeue works in a similar manner as pop()
 
 ## Hash Tables
 
