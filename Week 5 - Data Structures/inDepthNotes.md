@@ -44,6 +44,15 @@ Singly Linked Lists that can only move forward. Meaning that once you move to a 
 
 
 ## Doubly Linked Lists
+These are very similar to Singly Linked Lists, except they can move forward and backward. That means a node can be deleted without issues. They're created in a similar manner to Singly Linked Lists, except they also have a *prev pointer, to move backwards.
+
+* **INSERT**
+	- The prev pointer of the old head points to the new head
+	- The prev pointer of the new head points to NULL
+* **DELETE**
+	- Used mainly to delete nodes in the middle of the list, it's difficult to delete beginning and end nodes
+	- The node before the deleted node *next points to the node after the deleted node
+	- The node after the delete node *prev points to the node before the deleted node
 
 ## Stacks
 
