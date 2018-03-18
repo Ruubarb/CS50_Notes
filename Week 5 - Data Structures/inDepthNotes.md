@@ -14,6 +14,15 @@ Arrays and Linked Lists are used in the various data structures discussed here. 
 ---
 
 ## Singly Linked Lists
+They're made up of nodes with a type and a pointer assigned to them. They're also a self-referential structure. This means that the name of the linked list can't match the name being referenced for it to work properly.
+
+Linked Lists are made up of a chain of nodes, and each node contains the value and a pointer. The beginning of the list, commonly referred to as the **head** points to the first node, and the pointer in that node points to the value in the second node. The pointer in the second node points to the value in the third node...and so on.
+
+These data structures are capable of CREATE, SEARCH, INSERT, AND DELETE functions.
+
+Singly Linked Lists that can only move forward. Meaning that once you move to a new node in a linked list, it's difficult to go back without having extra pointers. It's actually so difficult to go back that it's recommended to use Doubly Linked Lists instead.
+
+
 
 ## Doubly Linked Lists
 
