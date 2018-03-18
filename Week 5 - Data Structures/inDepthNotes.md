@@ -101,3 +101,12 @@ However, if Linear Probing goes too far it can lead to clustering, too much side
 Another way to prevent collisions is **Chaining**, by having each element of the array contain multiple values. This is done by having linked lists as the elements and storing the values in those lists. Now one chain can be searched instead of the entire hash table.
 
 ## Tries
+Tries are a data tree type of structure. Each key is always unique, and each value is a boolean. Tries combine arrays, structs, and pointers. 
+
+A trie starts with a central root, labeled with digits, and is a recursive struct. When a location for data is found, another node is built and so on until the date is stored and the pointer equals NULL.  
+
+Data is stored in the last node created. When data is inserted, nodes are *opened* along the way. If other data passes through the same nodes again, they don't need to be cleared again. 
+
+When searching through a trie, the search starts from the root and ends until a NULL is hit. The search follows the path of the already opened nodes. The entire path is traversed until the value is found or the node points to NULL.
+
+Tries have an O(n/constant) runtime, but take up a lot of memory to build.
