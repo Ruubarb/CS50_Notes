@@ -55,6 +55,21 @@ These are very similar to Singly Linked Lists, except they can move forward and 
 	- The node after the delete node *prev points to the node before the deleted node
 
 ## Stacks
+Data is organized in a **LIFO**, Last In First Out, manner. Think of it like a physical stack, if the bottom is removed the rest of the stack collapses, so the top needs to be removed first.
+
+Push() adds an element to the top of the stack and Pop() removes an element from the top.
+
+**Array based**
+
+* Push needs to accept the pointer to the stack to actually change the stack and it's value. The index must also update
+* Pop works similar, except the index decrements in value. The value is returned instead of actually being deleted. However, it's index can be overwritten with a new value
+
+**Linked List based**
+
+* Push needs a new node created and pointers setup
+* Pop goes to the second element, makes it to the head node, and has a second pointer keep track of the new head
+
+Stacks are used to grab the most recently added element.
 
 ## Queues
 
