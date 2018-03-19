@@ -3,9 +3,9 @@
 ---
 
 ### Arrays and Linked Lists
-Both arrays and linked lists are collection of the same data type. They have their advantages and disadvantages.
+Both arrays and linked lists are collections of the same data type. They have their advantages and disadvantages.
 
-With arrays, you can search for an element in the array without going through the entire array by simply looking for a particular index number. However, arrays have a fixed capacity, meaning if your array has a length of 100, adding 101 items or more causes problems.
+With arrays, you can search for a single element by simply looking for a particular index number. However, arrays have a fixed capacity, meaning if your array has a length of 100, adding 101 items or more causes problems.
 
 With linked lists, the capacity is dynamic, it can expand and shrink as needed. However, a [linear search](https://github.com/00SaadChaudhry/CS50_Notes/blob/master/Week%203%20-%20Algorithms/notes.md#linear-search) needs to be done through the list to find one item, you can't just tell the program to specifically find an item.
 
@@ -21,30 +21,30 @@ Linked Lists are made up of a chain of nodes, and each node contains the value a
 These data structures are capable of **CREATE**, **SEARCH**, **INSERT**, AND **DELETE** functions.
 
 * **CREATE** 
-	- Allocates memory for the list. 
-	- Initializes value field, a null pointer, and a return pointer to a new node
+	- Allocates memory for the list
+	- Initializes a value field, a null pointer, and a return pointer to a new node
 * **SEARCH** 
 	- Tracks the first element of the list, searching through the node chain looking for the value
 	- Before it does any of this, it creates a duplicate of the head node instead of moving that node around and causing issues
-	- Is a linear search, so sorting is necessary
+	- Is a linear search, so sorting isn't required
 	- The search ends when the pointer points to *NULL*, meaning the value wasn't found
 * **INSERT**
 	- It tracks the head node and the value to be added as arguments
-	- The value is added at the beginning, since order doesn't matter and adding it is instant, this also means the runtime is O(1)
+	- The value is added at the beginning, since order doesn't matter and adding it is instant, this also means the runtime is O(constant)
 	- The inserted value must point to the old head first, then the beginning of the list can start at the new value
-		+	Not doing it the above way will orphan the rest of the list
+		+ *Not doing it the above way will orphan the the list*
 * **DELETE**
 	- An entire list or individual nodes can be deleted, but it's not recommended to delete nodes with a Singly Linked List
 	- To delete an entire list move down the list until the end pointer, which points to NULL is reached
 	- This list deletion works in a recursive manner, so if the pointer points to NULL, it gets deleted
 	- That means the next node will now point to NULL, and so on until all nodes are deleted	
 
-Singly Linked Lists that can only move forward. Meaning that once you move to a new node in a linked list, it's difficult to go back without having extra pointers. It's actually so difficult to go back that it's recommended to use Doubly Linked Lists instead.
+Singly Linked Lists  can only move forward. Meaning that once you move to a new node in a linked list, it's difficult to go back without having extra pointers. It's actually so difficult to go back that it's recommended to use Doubly Linked Lists instead.
 
 
 
 ## Doubly Linked Lists
-These are very similar to Singly Linked Lists, except they can move forward and backward. That means a node can be deleted without issues. They're created in a similar manner to Singly Linked Lists, except they also have a *prev pointer, to move backwards.
+These are similar to Singly Linked Lists, except they can move forward and backward. That means a node can be deleted without issues. They're created in a similar manner to Singly Linked Lists, except they also have a *prev pointer, to move backwards.
 
 * **INSERT**
 	- The prev pointer of the old head points to the new head
@@ -57,29 +57,29 @@ These are very similar to Singly Linked Lists, except they can move forward and 
 ## Stacks
 Data is organized in a **LIFO**, Last In First Out, manner. Think of it like a physical stack, if the bottom is removed the rest of the stack collapses, so the top needs to be removed first.
 
-Push() adds an element to the top of the stack and Pop() removes an element from the top.
+**Push()** adds an element to the top of the stack and **Pop()** removes an element from the top.
 
 **Array based**
 
-* Push needs to accept the pointer to the stack to actually change the stack and it's value. The index must also update
-* Pop works similar, except the index decrements in value. The value is returned instead of actually being deleted. However, it's index can be overwritten with a new value
+* Push needs to accept the pointer to the stack to actually change the stack and it's value. The index must also update by 1.
+* Pop works similar, except the index decrements in value. The value is returned instead of actually being deleted. However, it's index can be overwritten with a new value.
 
 **Linked List based**
 
-* Push needs a new node created and pointers setup
+* Push needs a new node created and new pointers set up
 * Pop goes to the second element, makes it to the head node, and has a second pointer keep track of the new head
 
 Stacks are used to grab the most recently added element.
 
 ## Queues
-Similar concept to Stacks, except they're FIFO, First In Last Out, like a queue of people in a physical setting.
+Similar concept to Stacks, except they're **FIFO**, First In First Out, like a queue of people.
 
-Enqueue adds an element to the end of the queue, and Dequeue removes an element from the beginning of the queue.
+**Enqueue** adds an element to the end of the queue, and **Dequeue** removes an element from the beginning of the queue.
 
 **Array based**
 
-* Enqueue needs to accept a pointer and a value to the queue. The value is added to the queue's end, and the queue size increases by 1
-* Dequeue accepts a pointer, and changes the location of the front element by 1. The size is decreased by 1 and the deleted value is returned
+* Enqueue needs to accept a pointer and a value to the queue. The value is added to the queue's end, and the queue size increases by 1.
+* Dequeue accepts a pointer, and changes the location of the front element by 1. The size is decreased by 1 and the deleted value is returned.
 
 **Linked List based**
 
@@ -90,13 +90,11 @@ Enqueue adds an element to the end of the queue, and Dequeue removes an element 
 ## Hash Tables
 They combine abilities of arrays and linked lists, but they're not good for sorting data. When you're using a hash table, you care about the runtime in finding an element and don't want to increase it by sorting the hash table. You let the function decide where the element should go in the table.
 
-The hash function returns a positive integer, known as a hash code, and an array that can store data. The value is run through the function, stored somewhere in the array, and is represented by the hash code. 
+The **hash function** returns a positive integer, known as a **hash code**, and an array that can store data. The value is run through the function, stored somewhere in the array, and is represented by the hash code. 
 
-Instead of creating a hash function it's better to find one online (and cite your source as you would for any function you didn't create) because of the rules needed for a good hash function. 
+Instead of creating a hash function it's better to find one online (*and cite your source as you would for any function you didn't create*) because of the rules needed for a good hash function. 
 
-Sometimes hash tables can experience something known as collision, which is multiple values being given the same key. One way to get around this is by **Linear Probing**.  
-This is incrementing the hash code by 1 to find a suitable location.  
-However, if Linear Probing goes too far it can lead to clustering, too much side-by-side data, which can lead to a collision. 
+Sometimes hash tables can experience a collision, which is multiple values being given the same key. One way to get around this is by **Linear Probing**. This is incrementing the hash code by 1 to find a suitable location. However, if Linear Probing goes increments too much it can lead to clustering, too much side-by-side data, which can lead to a collision. 
 
 Another way to prevent collisions is **Chaining**, by having each element of the array contain multiple values. This is done by having linked lists as the elements and storing the values in those lists. Now one chain can be searched instead of the entire hash table.
 
