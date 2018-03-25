@@ -13,3 +13,5 @@
 ---
 
 ###### texts
+
+Speller looks for misspelled words from amongst the files in the **texts** directory. This directory is in gitignore.
