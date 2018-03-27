@@ -2,7 +2,7 @@
 
 ## Included Files Explanation
 
-### dictionary.h
+### dictionary.h and dictionary.c
 
 1. **ifndef** and **define** checks if DICTIONARY_H has been defined earlier in the existing file or another file, if not previously defined it defines it.
 2. **define LENGTH 45**Defines the max length for a word, 45 characters
@@ -13,8 +13,8 @@
 7. **endif** ends the ifndef condition above
 
 * Are *ifndef* and *indef* the start and end of an if statement?
+* Numbers 3-6 are functions we create in **dictionary.c**, that are called in **dictionary.h**
 
-### dictionary.c
 
 ### makefile
 
