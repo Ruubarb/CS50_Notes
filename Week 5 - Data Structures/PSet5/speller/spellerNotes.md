@@ -18,6 +18,16 @@
 
 ### makefile
 
+When compiling the program, the **makefile** is important because it decides how it compiles. The **make** command is all that's needed, but **make clean** can be run if we need to delete any core files.
+
+There's a blank section for libraries, in case we need to add any, though the walkthrough says that most likely won't happen.
+
+* In this makefile we're compiling with clang and passing the usual flags
+* dictionary.h is the header file, the source files are speller.c and dictionary.c
+* The created executable will be speller.exe
+* Any changes made to the makefile or the headers(dictionary.h) means the program needs to be re-compiled
+* The files deleted when running the **make clean** command are any .exe or .o files created
+
 ### speller.c
 
 ---
