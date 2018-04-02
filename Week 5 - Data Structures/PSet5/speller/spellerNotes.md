@@ -30,6 +30,41 @@ There's a blank section for libraries, in case we need to add any, though the wa
 
 ### speller.c
 
+#### General Notes
+
+* **getrusage** is used to benchmark the implementations of **check**, **load**, **size**, and **unload**
+	- getrusage, along with rusage, is used to examine the resource usage of a process
+* The benchmarks are *double* data types, with **time_** prefixed before them
+* **check** goes word by word in each text file. The misspellings are reported along with some statistics.
+* The *dictionary* argument is optional, but if it's not used *dictionaries/large* runs by default
+* However, a dictionary can't be loaded by the **speller.c** until the load function works
+
+#### Program Notes
+
+* Main first checks if the correct number of arguments is entered
+* rusage structs for before and after, the timing, are created
+* benchmarks are done for the functions in dictionary.c and dictionary.h
+* The program determines whether to use a dictionary from the argument, or the default dictionary
+* The dictionary is loaded
+* If the dictionary isn't loaded, abort the program
+* time_load runs a benchmark to see how long it takes for the dictionary to load
+* Text file is opened and a check is done to make sure it's not NULL
+* File is spell-checked, word by word
+	- Done within a for loop, which stops when the EOF is reached
+	- Only alphabetical characters and apostrophes are checked
+	- If a string is too long to be a word, it's ignored, and a new word is prepared by bringing the index back to 0
+	- Any words containing numbers are ignored and a new word is prepared
+		+ When a string is too long or when it contains numbers, the string is still followed through until its end
+	- If a complete word is found, the **words** counter increases by 1
+	- The word is spell checked and printed. The misspelling counter also increases by 1
+	- time_check benchmark updates
+* Error check is ran on the text file
+* File is closed
+* The dictionary's size is determined and a benchmark is ran on it
+* Dictionary is unloaded, and if it can't be unloaded an error is printed 
+* Benchmark on the dictionary's unload time is calculated
+* Another benchmark is ran
+
 ---
 
 ###### texts
