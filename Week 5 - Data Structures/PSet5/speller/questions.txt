@@ -1,13 +1,20 @@
 0.  What is pneumonoultramicroscopicsilicovolcanoconiosis?
+The longest word in a Oxford English dictionary, at 45 characters, "an artificial long word said to mean a lung disease caused by inhaling very fine ash and sand dust."
 
 1.  According to its man page, what does getrusage do?
+This gets the resource usage, which can be done for itself, its children, or the calling thread
 
 2.  Per that same man page, how many members are in a variable of type struct rusage?
+16 members
 
 3.  Why do you think we pass before and after by reference (instead of by value) to calculate, even though we’re not changing their contents?
+It's faster this way
 
 4.  Explain as precisely as possible, in a paragraph or more, how main goes about reading words from a file. In other words, convince us that you indeed understand how that function’s for loop works.
+https://github.com/00SaadChaudhry/CS50_Notes/blob/Week5_DataStructures/Week%205%20-%20Data%20Structures/PSet5/speller/spellerNotes.md#spellerc
 
 5.  Why do you think we used fgetc to read each word’s characters one at a time rather than use fscanf with a format string like "%s" to read whole words at a time? Put another way, what problems might arise by relying on fscanf alone?
+This is so words containing numbers or containing non-alpha characters (except apostrophes) aren't scanned over and spellchecked.
 
 6.  Why do you think we declared the parameters for check and load as const (which means "constant")?
+So the values for them can't be changed either by the program or by accident
