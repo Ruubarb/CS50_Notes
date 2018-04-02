@@ -5,14 +5,13 @@
 ### dictionary.h and dictionary.c
 
 1. **ifndef** and **define** checks if DICTIONARY_H has been defined earlier in the existing file or another file, if not previously defined it defines it.
-2. **define LENGTH 45**Defines the max length for a word, 45 characters
-3. **bool check(const char *word)** checks if the word is in the dictionary, and returns true if the word exist, false if not. The const keyword means this variable is immutable 
-4. **bool load(const char *dictionary)** loads the dictionary. If the dictionary loads return true, if not return false.
+2. **define LENGTH 45** Defines the max length for a word, 45 characters
+3. **bool check(const char *word)** checks if the word is in the dictionary, and returns true if the word exists, false if not. The const keyword means this variable is immutable 
+4. **bool load(const char *dictionary)** loads the dictionary. If the dictionary loads, return true, if not return false.
 5. **unsigned int size(void)** returns the number of words in the dictionary, but returns 0 if the dictionary isn't yet loaded.
 6. **bool unload(void)** unloads the dictionary: true if successful, false if not.
 7. **endif** ends the ifndef condition above
 
-* Are *ifndef* and *indef* the start and end of an if statement?
 * Numbers 3-6 are functions we create in **dictionary.c**, that are called in **dictionary.h**
 
 
@@ -41,13 +40,21 @@ There's a blank section for libraries, in case we need to add any, though the wa
 
 #### Program Notes
 
+##### General
+
 * Main first checks if the correct number of arguments is entered
 * rusage structs for before and after, the timing, are created
-* benchmarks are done for the functions in dictionary.c and dictionary.h
+* Benchmarks are done for the functions in dictionary.c and dictionary.h
+
+##### Dictionary Loading
+
 * The program determines whether to use a dictionary from the argument, or the default dictionary
 * The dictionary is loaded
 * If the dictionary isn't loaded, abort the program
 * time_load runs a benchmark to see how long it takes for the dictionary to load
+
+##### Spellchecker
+
 * Text file is opened and a check is done to make sure it's not NULL
 * File is spell-checked, word by word
 	- Done within a for loop, which stops when the EOF is reached
@@ -58,6 +65,9 @@ There's a blank section for libraries, in case we need to add any, though the wa
 	- If a complete word is found, the **words** counter increases by 1
 	- The word is spell checked and printed. The misspelling counter also increases by 1
 	- time_check benchmark updates
+	
+##### After spellchecker 
+
 * Error check is ran on the text file
 * File is closed
 * The dictionary's size is determined and a benchmark is ran on it
@@ -69,4 +79,4 @@ There's a blank section for libraries, in case we need to add any, though the wa
 
 ###### texts
 
-Speller looks for misspelled words from amongst the files in the **texts** directory. This directory is in gitignore.
+Speller looks for misspelled words from amongst the files in the **texts** directory. This directory, along with the keys and dictionaries directory, are in my gitignore.
