@@ -86,7 +86,9 @@ Speller looks for misspelled words from amongst the files in the **texts** direc
 ## In Depth Explanation
 
 ### Linked List and Nodes
-It looks like the main data structure in this problem is the linked list. Either the linked list will be accessed by a hash table or a trie, it's up to the programmer. And each linked list, as with all linked lists, will contain nodes. My [previous notes](https://github.com/00SaadChaudhry/CS50_Notes/blob/master/Week%205%20-%20Data%20Structures/inDepthNotes.md#singly-linked-lists) go into detail about linked lists. This section will be more general and show syntax.
+This problem's main data structure is the linked list. Either the linked list will be accessed by a hash table or a trie, it's up to the programmer. And each linked list, as with all linked lists, will contain nodes. My [previous notes](https://github.com/00SaadChaudhry/CS50_Notes/blob/master/Week%205%20-%20Data%20Structures/inDepthNotes.md#singly-linked-lists) go into detail about linked lists. This section will be more general and show syntax.
+
+**Creating a node**
 
 	typedef struct node
 	{
@@ -96,7 +98,7 @@ It looks like the main data structure in this problem is the linked list. Either
 	node;
 	node* head = malloc(sizeof(node)); // points to first node
 	
-Use a loop to go through a linked list
+**Use a loop to go through a linked list**
 
 	node* cursor = head;
 	while (cursor != NULL)
@@ -106,7 +108,8 @@ Use a loop to go through a linked list
 	}
 	
 The list elements need to be freed properly, to prevent memory leaks. There are multiple ways of doing this. One way is to free them from tail to head, free the node pointing to NULL (the last node) until all nodes are free. However, this takes longer since the list needs to be cycled through each time until the tail is reached.  
-Another way is to create a temp pointer
+
+**Another way is to create a temp pointer**
 
 	node* cursor = head;
 	while (cursor != NULL)
