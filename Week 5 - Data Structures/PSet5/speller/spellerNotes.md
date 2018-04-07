@@ -88,4 +88,38 @@ Speller looks for misspelled words from amongst the files in the **texts** direc
 ### Linked List and Nodes
 It looks like the main data structure in this problem is the linked list. Either the linked list will be accessed by a hash table or a trie, it's up to the programmer. And each linked list, as with all linked lists, will contain nodes. My [previous notes](https://github.com/00SaadChaudhry/CS50_Notes/blob/master/Week%205%20-%20Data%20Structures/inDepthNotes.md#singly-linked-lists) go into detail about linked lists. This section will be more general and show syntax.
 
+	typedef struct node
+	{
+		int value;
+		struct node* next
+	}
+	node;
+	node* head = malloc(sizeof(node)); // points to first node
 	
+Use a loop to go through a linked list
+
+	node* cursor = head;
+	while (cursor != NULL)
+	{
+		// some code
+		cursor = cursor->next // move to the next node
+	}
+	
+The list elements need to be freed properly, to prevent memory leaks. There are multiple ways of doing this. One way is to free them from tail to head, free the node pointing to NULL (the last node) until all nodes are free. However, this takes longer since the list needs to be cycled through each time until the tail is reached.  
+Another way is to create a temp pointer
+
+	node* cursor = head;
+	while (cursor != NULL)
+	{
+		node* temp = cursor;
+		cursor = cursor->next;
+		free(temp);
+	}
+	
+This piece of code creates a temp pointer and temp always points to the first node, and updates each iteration. This prevents the head node from being freed by itself and cutting off the rest of the nodes (which will leave them in memory).
+
+#### Inserting Nodes
+
+* To insert at the end, have the tail node point to the new node, and have the new node point to NULL
+* To insert in-between, a temp pointer is needed. New node points to temp, temp points to ahead node, and behind node points to new node.
+* To insert at the beginning, a temp pointer is needed. Temp points to first node, new points to temp, and the head pointer points to the new node.
