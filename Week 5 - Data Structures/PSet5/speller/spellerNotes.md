@@ -80,3 +80,12 @@ There's a blank section for libraries, in case we need to add any, though the wa
 ###### texts
 
 Speller looks for misspelled words from amongst the files in the **texts** directory. This directory, along with the keys and dictionaries directory, are in my gitignore.
+
+---
+
+## In Depth Explanation
+
+### Linked List and Nodes
+It looks like the main data structure in this problem is the linked list. Either the linked list will be accessed by a hash table or a trie, it's up to the programmer. And each linked list, as with all linked lists, will contain nodes. My [previous notes](https://github.com/00SaadChaudhry/CS50_Notes/blob/master/Week%205%20-%20Data%20Structures/inDepthNotes.md#singly-linked-lists) go into detail about linked lists. This section will be more general and show syntax.
+
+	
