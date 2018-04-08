@@ -126,3 +126,25 @@ This piece of code creates a temp pointer and temp always points to the first no
 * To insert at the end, have the tail node point to the new node, and have the new node point to NULL
 * To insert in-between, a temp pointer is needed. New node points to temp, temp points to ahead node, and behind node points to new node.
 * To insert at the beginning, a temp pointer is needed. Temp points to first node, new points to temp, and the head pointer points to the new node.
+
+
+### Load()
+
+The dictionary can be loaded using a hash table or a trie, each with their own advantages and disadvantages.
+
+#### Hash Table
+
+#### Trie
+
+### Size()
+This function is the least complicated. It's suggested to have a running counter, as a global variable, in load and have size return that value.
+
+### Check()
+
+### Unload()
+Unload is similar whether using a hash table or a trie, but for a trie it's best to do it from bottom to top so there aren't any stray nodes in memory.
+
+---
+
+###### Valgrind
+A necessity in this program since malloc and free are going to be used.
