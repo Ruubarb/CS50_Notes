@@ -9,7 +9,7 @@
 3. **bool check(const char *word)** checks if the word is in the dictionary, and returns true if the word exists, false if not. The const keyword means this variable is immutable 
 4. **bool load(const char *dictionary)** loads the dictionary. If the dictionary loads, return true, if not return false.
 5. **unsigned int size(void)** returns the number of words in the dictionary, but returns 0 if the dictionary isn't yet loaded.
-6. **bool unload(void)** unloads the dictionary: true if successful, false if not.
+6. **bool unload(void)** unloads the dictionary: true if successful, false if not. Used to free memory.
 7. **endif** ends the ifndef condition above
 
 * Numbers 3-6 are functions we create in **dictionary.c**, that are called in **dictionary.h**
