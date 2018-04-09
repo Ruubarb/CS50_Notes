@@ -133,11 +133,41 @@ This piece of code creates a temp pointer and temp always points to the first no
 The dictionary can be loaded using a hash table or a trie, each with their own advantages and disadvantages.
 
 #### Hash Table
+If a hash table is used, the words will be stored within the linked list nodes that are within the hash table. The hash table will essentially be an array of linked lists.
+
+A hash table has two disadvantages:  
+Fixed size, so there will be problems if too many words are hashed.  
+Collision, when multiple values are hashed to the same node.
+
+
+	typdef struct node 
+	{
+		char word[LENGTH + 1];
+		struct node* next;
+	}
+	node;
+	node* hashtable[HASHTABLE_SIZE];
+		
+If a hash table is used, it will iterate over every word, and each word will become a new node. That word/node will be hashed into the table.
+	
 
 #### Trie
+If a trie is used, each letter will be stored in its own node starting from the root all the way to the bottom. Each node will contain an array of node* pointers, and each array element will point to another node.
+
+Tries have a dynamic capacity, and collision isn't a problem, but more code can be involved.
+
+	typedef struct node 
+	{
+		bool is_word;
+		struct node* children[27];
+	}
+	node;
+	node* root;
+	
+Using a **for loop**, each word will be iterated through the trie. Each element will be checked to see if the letter already exists. If it doesn't (NULL node), a new node is malloc'd. If the letter exists, the node has a value other than NULL, it moves onto the next node. If the end of the word is reached, **is_word** is set to true.
 
 ### Size()
-This function is the least complicated. It's suggested to have a running counter, as a global variable, in load and have size return that value.
+This function is the least complicated. It's suggested to have a running counter, as a global variable, in load and have size return that value. If a size function that counts every word is run, the runtime will increase significantly. 
 
 ### Check()
 
