@@ -164,16 +164,16 @@ Tries have a dynamic capacity, and collision isn't a problem, but more code can 
 	node;
 	node* root;
 	
-Using a **for loop**, each word will be iterated through the trie. Each element will be checked to see if the letter already exists. If it doesn't (NULL node), a new node is malloc'd. If the letter exists, the node has a value other than NULL, it moves onto the next node. If the end of the word is reached, **is_word** is set to true.
+Using a **for loop**, each word will be iterated through the trie. Each element will be checked to see if the letter already exists. If it doesn't (NULL node), a new node is **malloc'd**. If the letter exists, the node has a value other than NULL, it moves onto the next node. If the end of the word is reached, **is_word** is set to true.
 
 ### Size()
-This function is the least complicated. It's suggested to have a running counter, as a global variable, in load and have size return that value. If a size function that counts every word is run, the runtime will increase significantly. 
+This function is the least complicated. It's suggested to have a running counter (*as a global variable*) in load, and have size return that value. If a size function that counts every word is run, the runtime will increase significantly. 
 
 ### Check()
 Whether using a hash table or a trie, the check function needs to be case-insensitive
 
 #### Hash Table
-It will look for a word by searching within the array element, then within the linked list, until it finds the node containing the word: hastable[hash(word)]. The inputted word will be compared to the word in the node using a string compare method. If the end of the list is reached, a NULL value, the word isn't in the dictionary.
+It will look for a word by searching within the array element, then within the linked list, until it finds the node containing the word: **hastable[hash(word)]**. The inputted word will be compared to the word in the node using the **strcmp** method. If the end of the list is reached, a NULL value, the word isn't in the dictionary.
 
 #### Trie
 Using a for loop, each node will be searching from top-to-bottom, going letter through letter until the word is found or until a NULL value is hit
@@ -185,3 +185,5 @@ Unload is similar whether using a hash table or a trie, but for a trie it's best
 
 ###### Valgrind
 A necessity in this program since malloc and free are going to be used.
+
+	valgrind -v --leak-check=full ./speller/~cs50/pset5/texts/[example].txt
