@@ -170,6 +170,13 @@ Using a **for loop**, each word will be iterated through the trie. Each element 
 This function is the least complicated. It's suggested to have a running counter, as a global variable, in load and have size return that value. If a size function that counts every word is run, the runtime will increase significantly. 
 
 ### Check()
+Whether using a hash table or a trie, the check function needs to be case-insensitive
+
+#### Hash Table
+It will look for a word by searching within the array element, then within the linked list, until it finds the node containing the word: hastable[hash(word)]. The inputted word will be compared to the word in the node using a string compare method. If the end of the list is reached, a NULL value, the word isn't in the dictionary.
+
+#### Trie
+Using a for loop, each node will be searching from top-to-bottom, going letter through letter until the word is found or until a NULL value is hit
 
 ### Unload()
 Unload is similar whether using a hash table or a trie, but for a trie it's best to do it from bottom to top so there aren't any stray nodes in memory.
