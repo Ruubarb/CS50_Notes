@@ -11,6 +11,7 @@ int main(void)
     }
     node;
 
+    /*
     node* head = malloc(sizeof(node));
     node* second = malloc(sizeof(node));
     node* third = malloc(sizeof(node));
@@ -22,7 +23,19 @@ int main(void)
     third->value = 3;
     third->next = NULL;
 
-    printf("%d\n", third->value);
+    printf("%d\n", second->value);
+    */
+
+
+    node* cursor = malloc(sizeof(node));
+    cursor->value = 1;
+
+    while(cursor != NULL)
+    {
+        printf("%d\n", cursor->value);
+        cursor->value = cursor->value+1;
+        cursor = cursor->next;
+    }
 
     return 0;
 }
