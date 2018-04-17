@@ -18,6 +18,9 @@ bool check(const char *word)
     return false;
 }
 
+// tracks number of words in dictionary
+int counter;
+
 /*
 Hash Function adapted by Neel Mehta from
 http://stackoverflow.com/questions/2571683/djb2-hash-function.
@@ -29,6 +32,9 @@ unsigned int hash_word(const char* word)
     for (const char* ptr = word; *ptr != '\0'; ptr++)
     {
         hash = ((hash << 5) + hash) + tolower(*ptr);
+
+        // increments counter as words are loaded into hash table
+        counter++;
     }
 
 return hash % NUM_BUCKETS;
@@ -52,6 +58,10 @@ bool load(const char *dictionary)
 unsigned int size(void)
 {
     // TODO
+
+    // final tally of dictionary words
+    return counter;
+
     return 0;
 }
 
