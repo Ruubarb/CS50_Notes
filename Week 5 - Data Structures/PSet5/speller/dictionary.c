@@ -3,8 +3,11 @@
  */
 
 #include <stdbool.h>
+#include <ctype.h>
 
 #include "dictionary.h"
+
+#define NUM_BUCKETS 1000;
 
 /**
  * Returns true if word is in dictionary else false.
@@ -15,12 +18,31 @@ bool check(const char *word)
     return false;
 }
 
+/*
+Hash Function adapted by Neel Mehta from
+http://stackoverflow.com/questions/2571683/djb2-hash-function.
+*/
+unsigned int hash_word(const char* word)
+{
+    unsigned long hash = 5381;
+
+    for (const char* ptr = word; *ptr != '\0'; ptr++)
+    {
+        hash = ((hash << 5) + hash) + tolower(*ptr);
+    }
+
+return hash % NUM_BUCKETS;
+}
+
 /**
  * Loads dictionary into memory. Returns true if successful else false.
  */
 bool load(const char *dictionary)
 {
     // TODO
+    unsigned int hash_word(const char* word);
+
+
     return false;
 }
 
