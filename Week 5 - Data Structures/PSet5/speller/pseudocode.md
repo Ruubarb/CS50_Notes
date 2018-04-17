@@ -8,6 +8,8 @@
 2. Hash words from dictionary to place them into nodes
 
 ### Pseudocode
+[hash function source](https://github.com/hathix/cs50-section/blob/master/code/7/sample-hash-functions/good-hash-function.c)
+
 
 
 ## Size
@@ -29,7 +31,6 @@
 2. String compare hashed word with node value
 
 ### Pseudocode
-[hash function source](https://github.com/hathix/cs50-section/blob/master/code/7/sample-hash-functions/good-hash-function.c)
 
 
 ## Unload
