@@ -94,7 +94,7 @@ This problem's main data structure is the linked list. Either the linked list wi
 	typedef struct node
 	{
 		int value;
-		struct node* next
+		struct node* next;
 	}
 	node;
 	node* head = malloc(sizeof(node)); // points to first node
