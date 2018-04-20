@@ -12,9 +12,19 @@ int main(void)
     node;
 
     node* head = NULL;
+    node* second = NULL;
+    node* third = NULL;
+
     head = malloc(sizeof(node));
+    second = malloc(sizeof(node));
+    third = malloc(sizeof(node));
+
     head->value = 1;
-    head->next = NULL;
+    head->next = second;
+    second->value = 2;
+    second->next = third;
+    third->value = 3;
+    third->next = NULL;
 
     while (head != NULL)
     {
