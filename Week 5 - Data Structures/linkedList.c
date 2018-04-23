@@ -17,6 +17,8 @@ int main(void)
     node* cursor = malloc(sizeof(node));
 
     head->next = cursor; //head node points cursor
+
+    /*
     cursor->value = 2;
     cursor->next = NULL;
     cursor->value = 4;
@@ -30,6 +32,14 @@ int main(void)
     {
         cursor1 = cursor1->next;
         printf("%i\n", cursor1->value);
+    }
+    */
+
+    for (int i = 1; i <= 10; i++)
+    {
+        cursor->value = i;
+        cursor->next = NULL;
+        printf("%i\n", cursor->value);
     }
 
 
