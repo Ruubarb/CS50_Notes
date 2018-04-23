@@ -12,19 +12,17 @@ int main(void)
     node;
 
     node* head = NULL;
-    node* second = NULL;
-    node* third = NULL;
-
     head = malloc(sizeof(node));
-    second = malloc(sizeof(node));
-    third = malloc(sizeof(node));
 
-    head->value = 1;
-    head->next = second;
-    second->value = 2;
-    second->next = third;
-    third->value = 3;
-    third->next = NULL;
+    node* cursor = NULL;
+    cursor = malloc(sizeof(node));
+
+    head->next = cursor;
+    cursor->value = 2;
+    cursor->next = NULL;
+
+    head = cursor; //assigns head node to cursor node
+
 
     while (head != NULL)
     {
