@@ -14,15 +14,11 @@ int main(void)
     node* head = NULL;
     head = malloc(sizeof(node));
 
-    node* cursor = NULL;
-    cursor = malloc(sizeof(node));
+    node* cursor = malloc(sizeof(node));
 
-    head->next = cursor;
+    head->next = cursor; //head node points cursor
     cursor->value = 2;
     cursor->next = NULL;
-
-    head = cursor; //assigns head node to cursor node
-
 
     while (head != NULL)
     {
