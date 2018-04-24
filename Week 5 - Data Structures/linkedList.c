@@ -11,7 +11,11 @@ int main(void)
     }
     node;
 
-    node* head, n, t;
+    node* head;
+    head = NULL;
+    node* t;
+    node* n;
+    n = NULL;
 
     head->next = n;
 
@@ -21,6 +25,7 @@ int main(void)
         n->value = i;
         t->next = n;
         t = t->next;
+        printf("%i ", n->value);
     }
 
     while (head != NULL)
