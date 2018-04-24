@@ -11,6 +11,26 @@ int main(void)
     }
     node;
 
+    node* head, n, t;
+
+    head->next = n;
+
+    for (int i = 1; i <= 10; i++)
+    {
+        n = malloc(sizeof(node));
+        n->value = i;
+        t->next = n;
+        t = t->next;
+    }
+
+    while (head != NULL)
+    {
+        node* temp = head;
+        head = head->next;
+        free(temp);
+    }
+
+    /*
     node* head = NULL;
     head = malloc(sizeof(node));
 
@@ -18,7 +38,7 @@ int main(void)
 
     head->next = cursor; //head node points cursor
 
-    /*
+
     cursor->value = 2;
     cursor->next = NULL;
     cursor->value = 4;
@@ -33,7 +53,7 @@ int main(void)
         cursor1 = cursor1->next;
         printf("%i\n", cursor1->value);
     }
-    */
+
 
     for (int i = 1; i <= 10; i++)
     {
@@ -41,14 +61,8 @@ int main(void)
         cursor->next = NULL;
         printf("%i\n", cursor->value);
     }
+    */
 
-
-    while (head != NULL)
-    {
-        node* temp = head;
-        head = head->next;
-        free(temp);
-    }
 
     return 0;
 }
