@@ -11,21 +11,22 @@ int main(void)
     }
     node;
 
-    node* head;
-    head = NULL;
-    node* t;
-    node* n;
-    n = NULL;
+    //creates nodes for head, tmp, content
+    node* head = NULL;
+    node* tmp = NULL;
+    node* content = NULL;
 
-    head->next = n;
+    head->next = content; //head node points to content
 
     for (int i = 1; i <= 10; i++)
     {
-        n = malloc(sizeof(node));
-        n->value = i;
-        t->next = n;
-        t = t->next;
-        printf("%i ", n->value);
+        content = malloc(sizeof(node)); //creates new node
+        content->value = i; //node value is i
+        tmp->next = content; //tmp node points to content node
+        tmp = tmp->next; //tmp node b
+        content->next = NULL; //content node points to null
+
+        printf("%i ", content->value); //see node value
     }
 
     while (head != NULL)
