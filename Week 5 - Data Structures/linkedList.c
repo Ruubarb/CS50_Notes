@@ -9,22 +9,38 @@ int main(void)
         int value;
         struct node* next;
     }
-    nodePtr;
+    node;
 
-    nodePtr* head = NULL;
-    nodePtr* tmp = NULL;
-    nodePtr* content = NULL;
+    node* head = NULL;
+    node* temp = NULL;
+    node* content = NULL;
 
     int i;
 
     for (i = 1; i <= 10; i++)
     {
-
+        if (head == NULL)
+        {
+            head = malloc(sizeof(node));
+            head->value = i;
+            head->next = NULL;
+        }
+        else
+        {
+            content = head;
+            while (content->next != NULL)
+            {
+                content = content->next;
+            }
+            content->next = malloc(sizeof(node));
+            content->next->value = i;
+        }
     }
 
     while (head != NULL)
     {
-        nodePtr* temp = head;
+        temp = head;
+        printf("Node data: %d\n", temp->value);
         head = head->next;
         free(temp);
     }
