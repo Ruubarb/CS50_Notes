@@ -9,11 +9,11 @@ int main(void)
         int value;
         struct node* next;
     }
-    node;
+    nodePtr;
 
-    node* head = NULL;
-    node* tmp = NULL;
-    node* content = NULL;
+    nodePtr* head = NULL;
+    nodePtr* tmp = NULL;
+    nodePtr* content = NULL;
 
     int i;
 
@@ -24,7 +24,7 @@ int main(void)
 
     while (head != NULL)
     {
-        node* temp = head;
+        nodePtr* temp = head;
         head = head->next;
         free(temp);
     }
