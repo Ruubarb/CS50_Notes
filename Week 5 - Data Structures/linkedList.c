@@ -17,30 +17,14 @@ int main(void)
 
     int i;
 
-    for (i = 1; i <= 10; i++)
+    for (i = 10; i >= 1; i--)
     {
-        if (head == NULL)
-        {
-            head = malloc(sizeof(node));
-            head->value = i;
-            head->next = NULL;
-        }
-        else
-        {
-            content = head;
-            while (content->next != NULL)
-            {
-                content = content->next;
-            }
-            content->next = malloc(sizeof(node));
-            content->next->value = i;
-        }
+
     }
 
     while (head != NULL)
     {
         temp = head;
-        printf("Node data: %d\n", temp->value);
         head = head->next;
         free(temp);
     }
