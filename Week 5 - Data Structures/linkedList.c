@@ -17,10 +17,19 @@ int main(void)
 
     int i;
 
-    for (i = 10; i >= 1; i--)
+    for (i = 1; i <= 10; i++)
     {
-
+        content = malloc(sizeof(head));
+        content->value = i;
+        content->next = head;
+        head = content;
+        while (content->next != NULL)
+        {
+            printf("%i ", content->value);
+            content = content->next;
+        }
     }
+    printf("\n");
 
     while (head != NULL)
     {
