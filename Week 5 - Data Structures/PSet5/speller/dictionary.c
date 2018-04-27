@@ -7,7 +7,7 @@
 
 #include "dictionary.h"
 
-#define NUM_BUCKETS 1000;
+#define NUM_BUCKETS 5000;
 
 /**
  * Returns true if word is in dictionary else false.
@@ -40,12 +40,20 @@ unsigned int hash_word(const char* word)
 return hash % NUM_BUCKETS;
 }
 
+typedef struct node
+{
+    char* word;
+    struct node* next;
+}
+node;
+
 /**
  * Loads dictionary into memory. Returns true if successful else false.
  */
 bool load(const char *dictionary)
 {
     // TODO
+
     unsigned int hash_word(const char* word);
 
 
