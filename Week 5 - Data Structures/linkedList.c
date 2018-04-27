@@ -15,16 +15,25 @@ int main(void)
     node* temp = NULL;
     node* content = NULL;
 
-    int i;
+    //int i;
 
-    for (i = 1; i <= 10; i++)
-    {
-        content = malloc(sizeof(node));
-        content->value = i;
-        head = content;
-        content->next = head;
-    }
-    printf("\n");
+    content = malloc(sizeof(node));
+    content->value = 1;
+    content->next = NULL;
+    head = content;
+    printf("%i\n", content->value);
+
+    content = malloc(sizeof(node));
+    content->value = 2;
+    content->next = content;
+    head = content;
+    printf("%i\n", content->value);
+
+    content = malloc(sizeof(node));
+    content->value = 3;
+    content->next = content;
+    head = content;
+    printf("%i\n", content->value);
 
     while (head != NULL)
     {
